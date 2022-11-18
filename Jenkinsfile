@@ -23,7 +23,7 @@ pipeline{
                  def uploadSpec = """{
                     "files": [{
                        "pattern": "com/{*}",
-                       "target": "restro-maven-local/"
+                       "target": "restro-mvn-local/"
                     }]
                  }"""
 
