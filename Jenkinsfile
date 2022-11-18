@@ -22,7 +22,7 @@ pipeline{
                  def server = Artifactory.server 'jfrog-artifactory'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "com/{*}",
+                       "pattern": "com/",
                        "target": "restro-mvn-local/"
                     }]
                  }"""
