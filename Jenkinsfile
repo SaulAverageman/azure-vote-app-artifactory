@@ -2,7 +2,6 @@ pipeline{
     agent any
     tools{
         maven 'MAVEN_HOME'
-        docker 'org.jenkinsci.plugins.docker.commons.tools.DockerTool'
     }
 
     environment {
@@ -18,15 +17,18 @@ pipeline{
         }
 
         stage ("upload to artifactory"){
-            agent {
-                docker {
-                    image 'releases-docker.jfrog.io/jfrog/jfrog-cli-v2:2.2.0' 
-                    reuseNode true
-                }
-            }
-
             steps {
-                sh 'jfrog rt upload --url http://10.0.0.0:9092/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} com/* restro-maven-local/'
+              script { 
+                 def server = Artifactory.server 'jfrog-artifactory'
+                 def uploadSpec = """{
+                    "files": [{
+                       "pattern": "com/{*}",
+                       "target": "restro-maven-local/"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+               }
             }
 
         }
