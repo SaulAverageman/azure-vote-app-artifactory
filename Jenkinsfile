@@ -3,7 +3,7 @@ pipeline{
 
     environment {
     CI = true
-    ARTIFACTORY_ACCESS_TOKEN = credentials('az-docker-artifactory-token')
+    ARTIFACTORY_ACCESS_TOKEN = credentials('az-container-artifactory-token')
   }
 
   stages{
