@@ -22,7 +22,7 @@ pipeline{
                  def server = Artifactory.server 'jfrog-artifactory'
                  def uploadSpec = """{
                     "files": [{
-                       "pattern": "com/",
+                       "pattern": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro.war",
                        "target": "restro-mvn-local/"
                     }]
                  }"""
