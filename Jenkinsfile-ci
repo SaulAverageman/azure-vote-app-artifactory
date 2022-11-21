@@ -19,14 +19,9 @@ pipeline{
 
         stage('Upload to Artifactory') {
           steps{
-            rtServer(
-              id: 'jfrog-artifactory',
-              url: 'http://0.0.0.0:9092/artifactory',
-              credentialsId: 'az-container-artifactory-token'
-            )
-
-            /*
             rtUpload (
+              buildName: 'restro.war'
+              buildNumber: 1
               serverId: 'jfrog-artifactory',
               spec: '''{
                         "files": [
@@ -35,10 +30,9 @@ pipeline{
                             "target": "restro-mvn-local/"
                           }
                         ]
-              }''',
-              failNoOp = true
+              }'''
             )
-            */
+            
         }
     }
   }
