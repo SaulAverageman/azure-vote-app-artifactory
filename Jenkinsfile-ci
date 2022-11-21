@@ -20,8 +20,8 @@ pipeline{
         stage('Upload to Artifactory') {
           steps{
             rtUpload (
-              buildName: 'restro.war'
-              buildNumber: '1'
+              buildName: 'restro.war',
+              buildNumber: '1',
               serverId: 'jfrog-artifactory',
               spec: '''{
                         "files": [
