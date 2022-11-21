@@ -20,8 +20,8 @@ pipeline{
               spec: '''{
                         "files": [
                           {
-                            "pattern":"restro-mvn-local/restro.war"
-                            "target": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro-built.war",
+                            "pattern":"restro-mvn-local/restro.war",
+                            "target": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro-built.war"
                           }
                         ]
               }'''
