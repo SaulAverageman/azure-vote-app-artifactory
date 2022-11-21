@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('Download from Artifactory') {
           steps{
-            rm -f '/var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/restro-built.war'
+            sh 'rm -f /var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/restro-built.war'
 
             rtDownload (
               buildName: 'restro.war',
