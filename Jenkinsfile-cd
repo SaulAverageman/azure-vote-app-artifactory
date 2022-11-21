@@ -26,8 +26,10 @@ pipeline{
                         ]
               }'''
             )
+
+            sh 'date'
             
-            sh 'ls /var/jenkins_home/workspace/ci-maven-artifactory/target/'
+            sh 'ls -a /var/jenkins_home/workspace/ci-maven-artifactory/target/'
         }
     }
   }
