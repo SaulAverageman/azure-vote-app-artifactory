@@ -18,18 +18,19 @@ pipeline{
         }
 
         stage('Upload to Artifactory') {
-          rtUpload (
-            serverId: 'jfrog-artifactory',
-            spec: '''{
-                      "files": [
-                        {
-                          "pattern": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro.war",
-                          "target": "restro-mvn-local/"
-                        }
-                      ]
-            }''',
-            failNoOp = true
-          )
+          steps{
+            rtUpload (
+              serverId: 'jfrog-artifactory',
+              spec: '''{
+                        "files": [
+                          {
+                            "pattern": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro.war",
+                            "target": "restro-mvn-local/"
+                          }
+                        ]
+              }''',
+              failNoOp = true
+            )
         }
     }
 }
