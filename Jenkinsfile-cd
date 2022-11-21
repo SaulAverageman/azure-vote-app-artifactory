@@ -1,9 +1,5 @@
 pipeline{
     agent any
-    tools{
-        maven 'MAVEN'
-        dockerTool 'DOCKER_HOME'
-    }
 
     environment {
         CI = true
