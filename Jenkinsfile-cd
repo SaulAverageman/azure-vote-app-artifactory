@@ -9,8 +9,7 @@ pipeline{
     stages{
         stage('Download from Artifactory') {
           steps{
-            sh 'pwd'
-            rm '/var/jenkins_home/workspace/ci-maven-artifactory/target/restro-built.war'
+            rm '/var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/restro-built.war'
 
             rtDownload (
               buildName: 'restro.war',
@@ -20,13 +19,13 @@ pipeline{
                         "files": [
                           {
                             "pattern":"restro-mvn-local/restro.war",
-                            "target": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro-built.war"
+                            "target": "/var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/restro-built.war"
                           }
                         ]
               }'''
             )
 
-            sh 'ls -a /var/jenkins_home/workspace/ci-maven-artifactory/target/'
+            sh 'ls -a /var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/'
         }
     }
   }
