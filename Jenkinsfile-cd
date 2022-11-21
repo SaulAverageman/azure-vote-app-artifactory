@@ -1,0 +1,33 @@
+pipeline{
+    agent any
+    tools{
+        maven 'MAVEN'
+        dockerTool 'DOCKER_HOME'
+    }
+
+    environment {
+        CI = true
+        ARTIFACTORY_ACCESS_TOKEN = credentials('az-container-artifactory-token')
+    }
+
+        stage('Download from Artifactory') {
+          steps{
+            rtDownload (
+              buildName: 'restro.war',
+              buildNumber: '1',
+              serverId: 'jfrog-artifactory',
+              spec: '''{
+                        "files": [
+                          {
+                            "pattern":"restro-mvn-local/restro.war"
+                            "target": "/var/jenkins_home/workspace/ci-maven-artifactory/target/restro-built.war",
+                          }
+                        ]
+              }'''
+            )
+            
+            sh 'ls /var/jenkins_home/workspace/ci-maven-artifactory/target/'
+        }
+    }
+  }
+}
