@@ -18,13 +18,11 @@ pipeline{
                         "files": [
                           {
                             "pattern":"restro-mvn-local/restro.war",
-                            "target": "/var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/restro-built.war"
+                            "target": "./restro-built.war"
                           }
                         ]
               }'''
             )
-
-            sh 'ls -a /var/jenkins_home/workspace/cd-artifactory-azvm/artifacts/'
         }
     }
   }
