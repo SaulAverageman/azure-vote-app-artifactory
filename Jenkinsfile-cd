@@ -22,6 +22,8 @@ pipeline{
                           }
                         ]
               }'''
+              
+              sh 'scp -o StrictHostKeychecking=no -i key.pem *.war azureuser@20.127.237.212:/home/azureuser/jenkins/'
             )
         }
     }
